@@ -8,6 +8,7 @@ import priest from './SPELLS_PRIEST';
 import druid from './SPELLS_DRUID';
 import monk from './SPELLS_MONK';
 import shaman from './SPELLS_SHAMAN';
+import warrior from './SPELLS_WARRIOR';
 
 const ABILITIES = {
   ...others,
@@ -17,6 +18,7 @@ const ABILITIES = {
   ...druid,
   ...monk,
   ...shaman,
+  ...warrior,
 };
 
 export default indexById(ABILITIES);

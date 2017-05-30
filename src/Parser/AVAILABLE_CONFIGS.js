@@ -3,6 +3,7 @@ import DisciplinePriest from './DisciplinePriest/CONFIG';
 import RestoDruid from './RestoDruid/CONFIG';
 import RestorationShaman from './RestorationShaman/CONFIG';
 import MistweaverMonk from './MistweaverMonk/CONFIG';
+import FuryWarrior from './FuryWarrior/CONFIG';
 
 // Order of this should be the order in which specs were added to production
 export default [
@@ -11,4 +12,5 @@ export default [
   RestoDruid,
   MistweaverMonk,
   RestorationShaman,
+  FuryWarrior,
 ];

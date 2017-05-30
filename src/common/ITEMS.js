@@ -164,10 +164,16 @@ const ITEMS = {
     icon: 'inv_helmet_153',
     quality: QUALITIES.LEGENDARY,
   },
-  SOUL_OF_THE_ARCHDRUID: {
-    id: 151636,
-    name: 'Soul of the Archdruid',
-    icon: 'inv_70_raid_ring6a',
+  CEANNAR_CHARGER: {
+    id: 137088,
+    name: 'Ceann-Ar Charger',
+    icon: 'inv_helm_leather_pvpdruid_g_01',
+    quality: QUALITIES.LEGENDARY,
+  },
+  MANNOROTHS_BLOODLETTING_MANACLES: {
+    id: 137107,
+    name: 'Mannoroth\'s Bloodletting Manacles',
+    icon: 'inv_bracer_plate_pvpwarrior_d_01',
     quality: QUALITIES.LEGENDARY,
   },
 };
