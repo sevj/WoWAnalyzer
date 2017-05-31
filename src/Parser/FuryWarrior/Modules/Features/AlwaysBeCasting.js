@@ -10,6 +10,7 @@ class AlwaysBeCasting extends CoreAlwaysBeCasting {
     SPELLS.FURIOUS_SLASH.id,
     SPELLS.RAMPAGE.id,
     SPELLS.EXECUTE.id,
+    SPELLS.WHIRLWIND.id,
 
     // Warrior:
     SPELLS.CHARGE.id,
@@ -19,7 +20,7 @@ class AlwaysBeCasting extends CoreAlwaysBeCasting {
     SPELLS.PUMMEL.id,
 
     // Items:
-    225141, // http://www.wowhead.com/spell=225141/fel-crazed-rage (Draught of Souls)
+    SPELLS.FELL_CRAZED_RAGE.id,
   ];
 }
 

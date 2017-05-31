@@ -69,6 +69,7 @@ export default {
   },
   RAGING_BLOW: {
     id: 85288,
+    dmg_id: 96103,
     name: 'Raging Blow',
     icon: 'warrior_wild_strike',
   },
@@ -84,23 +85,15 @@ export default {
   },
   RAMPAGE: {
     id: 184367,
-    name: 'Rampage',
-    icon: 'ability_warrior_rampage',
-  },
-  RAMPAGE_BASE: {
-    id: 201363,
+    dmg_id: 201363,
     name: 'Rampage',
     icon: 'ability_warrior_rampage',
   },
   ODYNS_FURY: {
     id: 205545,
+    dmg_id: 205546,
     name: 'Odyn\'s Fury',
     icon: 'inv_sword_1h_artifactvigfus_d_01',
-  },
-  FELL_CRAZED_RAGE: {
-    id: 225141,
-    name: 'Fel Crazed Rage',
-    icon: 'sha_inv_elemental_primal_shadow_nightborne',
   },
   MANNOROTHS_BLOODLETTING_MANACLES: {
     id: 208909,
@@ -135,16 +128,29 @@ export default {
     icon: 'ability_warrior_improveddisciplines',
   },
   WAR_MACHINE_BUFF: {
-    id: 215557,
+    id: 215562,
     name: 'War Machine',
     icon: 'ability_hunter_rapidkilling',
-    description: 'Todo',
   },
   JUGGERNAUT_BUFF: {
     id: 201009,
     name: 'Juggernaut',
     icon: 'warrior_talent_icon_skirmisher',
-    description: 'Todo',
+  },
+  SENSE_DEATH_BUFF: {
+    id: 200979,
+    name: 'Sense Death',
+    icon: 'warrior_skullbanner',
+  },
+  BATTLE_CRY_BUFF: {
+    id: 1719,
+    name: 'Battle Cry',
+    icon: 'warrior_talent_icon_innerrage',
+  },
+  FUJIEDAS_FURY_BUFF: {
+    id: 207776,
+    name: 'Fujieda\'s fury',
+    icon: 'spell_shadow_unholyfrenzy',
   },
 
   // Talents:

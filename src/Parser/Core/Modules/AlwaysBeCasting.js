@@ -84,7 +84,13 @@ class AlwaysBeCasting extends Module {
       return;
     }
 
-    const globalCooldown = this.constructor.calculateGlobalCooldown(this.currentHaste) * 1000;
+    var globalCooldown = this.constructor.calculateGlobalCooldown(this.currentHaste) * 1000;
+
+    // Fel crazed rage 3sec delay
+    if (225141 == spellId)
+    {
+      globalCooldown += 3000;
+    }
 
     const castStartTimestamp = (begincast ? begincast : cast).timestamp;
 

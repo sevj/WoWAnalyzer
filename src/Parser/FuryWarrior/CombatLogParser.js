@@ -21,7 +21,9 @@ import Prydaz from 'Parser/Core/Modules/Items/Prydaz';
 import CooldownTracker from './Modules/Features/CooldownTracker';
 
 import AlwaysBeCasting from './Modules/Features/AlwaysBeCasting';
-import RampageCheck from './Modules/Features/RampageCheck';
+import JuggernautStacks from './Modules/Features/JuggernautStacks';
+import CastEfficiency from './Modules/Features/CastEfficiency';
+
 import CeannArCharger from './Modules/Items/CeannArCharger';
 import MannorothsBloodlettingManacles from './Modules/Items/MannorothsBloodlettingManacles';
 
@@ -58,8 +60,9 @@ class CombatLogParser extends MainCombatLogParser {
   static specModules = {
     // Features
     alwaysBeCasting: AlwaysBeCasting,
-    rampageCheck: RampageCheck,
     cooldownTracker: CooldownTracker,
+    juggernautStacks: JuggernautStacks,
+    castEfficiency: CastEfficiency,
 
     // Legendaries:
     prydaz: Prydaz,
@@ -81,12 +84,11 @@ class CombatLogParser extends MainCombatLogParser {
     const hasEndlessRage = this.selectedCombatant.hasTalent(SPELLS.ENDLESS_RAGE_TALENT.id);
     const hasAvatar = this.selectedCombatant.hasTalent(SPELLS.AVATAR_TALENT.id);
     const hasWreckingBall = this.selectedCombatant.hasTalent(SPELLS.WRECKING_BALL_TALENT.id);
-    const hasFrothingBerderker = this.selectedCombatant.hasTalent(SPELLS.FROTHING_BERSERKER_TALENT.id);
+    const hasFrothingBerserker = this.selectedCombatant.hasTalent(SPELLS.FROTHING_BERSERKER_TALENT.id);
     const hasFrenzy = this.selectedCombatant.hasTalent(SPELLS.FRENZY_TALENT.id);
     const hasInnerRage = this.selectedCombatant.hasTalent(SPELLS.INNER_RAGE_TALENT.id);
     const hasRecklessAbandon = this.selectedCombatant.hasTalent(SPELLS.RECKLESS_ABANDON_TALENT.id);
     const hasDragonRoar = this.selectedCombatant.hasTalent(SPELLS.DRAGON_ROAR_TALENT.id);
-
 
     // Uptimes
     const enrageUptime = this.selectedCombatant.getBuffUptime(SPELLS.ENRAGE_BUFF.id) / this.fightDuration;
@@ -100,8 +102,12 @@ class CombatLogParser extends MainCombatLogParser {
     const frothingProcs = this.selectedCombatant.getBuffTriggerCount(SPELLS.FROTHING_BERSERKER_BUFF.id);
     const berserkingProcs = this.selectedCombatant.getBuffTriggerCount(SPELLS.BERSERKING_BUFF.id);
     const warMachineProcs = this.selectedCombatant.getBuffTriggerCount(SPELLS.WAR_MACHINE_BUFF.id);
-    const executeStackCount = this.selectedCombatant.getBuffTriggerCount(SPELLS.JUGGERNAUT_BUFF.id);
+    const senseDeathProcs = this.selectedCombatant.getBuffTriggerCount(SPELLS.SENSE_DEATH_BUFF.id);
+    const executeStackCount = this.modules.juggernautStacks.maxCount;
 
+    // In depth analyse
+    const inDepth = this.modules.castEfficiency.errors;
+console.log(inDepth)
     // Legendaries
     const rageGainCeannArCharger = this.modules.ceannArCharger.rage;
     const mannorothHealing = this.modules.mannorothsBloodlettingManacles.healing;
@@ -135,6 +141,16 @@ class CombatLogParser extends MainCombatLogParser {
       }
     });
 
+
+    // Warrior fury gameplay errors
+    /*inDepth.forEach((error) => {
+      results.addIssue({
+        issue: <span>{error.issue}</span>,
+        icon: error.icon,
+        importance: error.importance,
+      });
+    });*/
+
     results.statistics = [
       <StatisticBox
         icon={(
@@ -163,7 +179,7 @@ class CombatLogParser extends MainCombatLogParser {
       <StatisticBox
         icon={(
           <img
-            src="./img/mastery-radius.png"
+            src="./img/warrior/spell_shadow_unholyfrenzy.jpg"
             style={{ border: 0 }}
             alt="Mastery effectiveness"
           />
@@ -181,7 +197,7 @@ class CombatLogParser extends MainCombatLogParser {
       <StatisticBox
         icon={(
           <img
-            src="./img/mastery-radius.png"
+            src="./img/warrior/ability_warrior_intensifyrage.jpg"
             style={{ border: 0 }}
             alt="Mastery effectiveness"
           />
@@ -199,7 +215,7 @@ class CombatLogParser extends MainCombatLogParser {
       <StatisticBox
         icon={(
           <img
-            src="./img/mastery-radius.png"
+            src="./img/warrior/ability_warrior_improveddisciplines.jpg"
             style={{ border: 0 }}
             alt="Mastery effectiveness"
           />
@@ -217,7 +233,7 @@ class CombatLogParser extends MainCombatLogParser {
       <StatisticBox
         icon={(
           <img
-            src="./img/mastery-radius.png"
+            src="./img/warrior/warrior_talent_icon_skirmisher.jpg"
             style={{ border: 0 }}
             alt="Mastery effectiveness"
           />
@@ -230,15 +246,32 @@ class CombatLogParser extends MainCombatLogParser {
         )}
       />,
     );
-    
+    // Sense Death
+    results.statistics.push(
+      <StatisticBox
+        icon={(
+          <img
+            src="./img/warrior/warrior_skullbanner.jpg"
+            style={{ border: 0 }}
+            alt="Mastery effectiveness"
+          />
+        )}
+        value={`${senseDeathProcs}`}
+        label={(
+          <dfn data-tip="Effects that temporarily increase your mastery are currently not supported and will skew results.">
+            Sense Death Procs
+          </dfn>
+        )}
+      />,
+    );
 
     // Talents choices
-    if (hasFrothingBerderker) {
+    if (hasFrothingBerserker) {
       results.statistics.push(
         <StatisticBox
           icon={(
             <img
-              src="./img/mastery-radius.png"
+              src="./img/warrior/warrior_talent_icon_furyintheblood.jpg"
               style={{ border: 0 }}
               alt="Mastery effectiveness"
             />
@@ -247,6 +280,26 @@ class CombatLogParser extends MainCombatLogParser {
           label={(
             <dfn data-tip="Effects that temporarily increase your mastery are currently not supported and will skew results.">
               Frothing Berserker Uptime
+            </dfn>
+          )}
+        />
+      );
+    }
+
+    if (hasWarMachine) {
+      results.statistics.push(
+        <StatisticBox
+          icon={(
+            <img
+              src="./img/warrior/ability_hunter_rapidkilling.jpg"
+              style={{ border: 0 }}
+              alt="Mastery effectiveness"
+            />
+          )}
+          value={`${(Math.round(warMachineUptime * 10000) / 100).toFixed(2)} % (${warMachineProcs})`}
+          label={(
+            <dfn data-tip="Effects that temporarily increase your mastery are currently not supported and will skew results.">
+              War Machine Uptime
             </dfn>
           )}
         />

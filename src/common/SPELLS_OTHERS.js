@@ -41,4 +41,14 @@ export default {
     name: 'Mark of the Ancient Priestess',
     icon: 'ability_priest_ascension',
   },
+  FELL_CRAZED_RAGE: {
+    id: 225141,
+    name: 'Fel Crazed Rage',
+    icon: 'sha_inv_elemental_primal_shadow_nightborne',
+  },
+  CONVERGENCE_OF_FATES: {
+    id: 225139,
+    name: 'Convergence of Fates',
+    icon : 'spell_arcane_mindmastery',
+  }
 };

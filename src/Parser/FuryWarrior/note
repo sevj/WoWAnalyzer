@@ -2,43 +2,45 @@
 
 // TopBar
 
-Damage done
-Dead GCD
+# Damage done
+# Dead GCD
 
 - Uptimes 
-Enrage uptime + count
-Berserker uptime + count
+# Enrage uptime + count
+# Berserker uptime + count
 Concordance uptime + count
-T - Frothing uptime + count
-T - War Machine uptime + count
+# T - Frothing uptime + count
+# T - War Machine uptime + count
 
 - Procs
-Odyns Champion procs (luck)
-Sense death (proc exec gratuit)
+# Odyns Champion procs (luck)
+# Sense death (proc exec gratuit)
 
 - Exec 
-Juggernaut max stack
+# Juggernaut max stack
 
 - Rampage
-Rampage 100 de rage / rampage total
+# Rampage 100 de rage / rampage total
 
 // Items
-helm : rage gained
+# helm : rage gained
 legs : rage gained
-wrist : healing done
+# wrist : healing done
 cape : uptime buff
 T19_4 : uptime enrage supplémentaire ?
 
 
-// Suggestions
-
-// Cast efficiency
+// Suggestions et possibles erreurs
+- rampage pas à 100
+- RB en exec ?
+- OF hors BC
+- FCR hors BC/AVATAR
+ 
 
 
 // Cooldowns
 Battle Cry
 Avatar
-Odyn's fury ?
 
 
 // Rage
@@ -51,3 +53,21 @@ Odyn's fury ?
 +some items
 +warrior fury parser
 +others tests
+
+
+
+
+
+//////////////////
+// Gameplay analyse
+//////////////////
+
+- check cycle errors
+	- RB > BT when !enrage
+	- rampage >100 rage
+	- RB HP >20%
+	- OF !BC
+	- Exec <20%, BT on CD, rage >25
+	- stack loose exec
+	- FCR efficiency
+	- cape buff loose

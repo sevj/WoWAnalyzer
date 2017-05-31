@@ -176,6 +176,17 @@ const ITEMS = {
     icon: 'inv_bracer_plate_pvpwarrior_d_01',
     quality: QUALITIES.LEGENDARY,
   },
+  FUJIEDAS_FURY: {
+    id: 137053,
+    name: 'Fujieda\'s fury',
+    icon: 'spell_shadow_unholyfrenzy',
+  },
+  CONVERGENCE_OF_FATES: {
+    id: 140806,
+    name: 'Convergence of Fates',
+    icon: 'ability_bossmagistrix_timewarp1',
+    quality: QUALITIES.EPIC,
+  },
 };
 
 export default indexById(ITEMS);
